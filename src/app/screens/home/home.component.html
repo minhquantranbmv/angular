@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="row">
+      <div *ngFor="let sub of subjects" class="col-3">
+          <a [routerLink]="'/quiz/' + sub.Code">
+              <img [src]="sub.Logo" width="100%">
+          </a>
+          <h3>
+              <a [routerLink]="'/quiz/' + sub.Code">
+                  {{sub.Name}}
+              </a>
+          </h3>
+      </div>
+  </div>
+</div>

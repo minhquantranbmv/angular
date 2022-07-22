@@ -1,0 +1,29 @@
+
+
+<div>
+  <a href ="admin/mon-hoc/add" type="button" class="btn btn-primary">Thêm</a>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Logo</th>
+      <th colspan="4">Thao Tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sb of subjects">
+      <td>{{sb.id}}</td>
+      <td>{{sb.Code}}</td>
+      <td>{{sb.Name}}</td>
+      <td><img src="{{sb.logo}}" width="50px" alt=""></td>
+      <td>
+        <a [routerLink] ="'edit/' + sb.id" type="button" class="btn btn-success">Sửa</a>
+        <a type="button" (click)="remove(sb.id)" onclick="return confirm('Bạn có chắc muốn xóa không ?')" class="btn btn-danger">Xóa</a>
+        <a [routerLink] ="'cau-hoi/' + sb.Code" type="button" class="btn btn-infor">Chi Tiết</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

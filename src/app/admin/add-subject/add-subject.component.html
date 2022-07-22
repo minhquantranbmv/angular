@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="col-8 offset-6">
+    <h3 class="text-center">Thêm môn học</h3>
+    <form [formGroup]="addSubjectForm" (ngSubmit)="addSubject()">
+      <div class="form-group">
+        <label for="">Code</label>
+        <input type="text" formControlName="Code" class="form-control">
+        <div *ngIf="addSubjectForm.controls['Code'].errors
+                && (addSubjectForm.controls['Code'].touched
+                || addSubjectForm.controls['Code'].dirty)">
+          <span class="text-danger" *ngIf="addSubjectForm.controls['Code'].hasError('required')">Không được để trống</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Tên Môn Học</label>
+        <input type="text" formControlName="Name" class="form-control">
+        <div *ngIf="addSubjectForm.controls['Name'].errors
+                && (addSubjectForm.controls['Name'].touched
+                || addSubjectForm.controls['Name'].dirty)">
+          <span class="text-danger" *ngIf="addSubjectForm.controls['Name'].hasError('required')">Không được để trống</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Ảnh</label>
+        <input type="file" (change)="chooseFile($event)" formControlName="Logo" class="form-control">
+        <div *ngIf="addSubjectForm.controls['Logo'].errors
+                && (addSubjectForm.controls['Logo'].touched
+                || addSubjectForm.controls['Logo'].dirty)">
+          <span class="text-danger" *ngIf="addSubjectForm.controls['Logo'].hasError('required')">Không được để trống</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <button [disabled]="addSubjectForm.invalid" class="btn btn-primary">Lưu</button>
+      </div>
+    </form>
+  </div>
+</div>

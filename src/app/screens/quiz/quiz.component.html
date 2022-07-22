@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Danh sách câu hỏi của môn {{code}}</h2>
+  <div class="row">
+      <div class="col-6">
+          <div class="form-group">
+              <label for="">Chọn sinh viên</label>
+              <select [(ngModel)]="working_student" class="form-control">
+                  <option value="">---Chọn sinh viên---</option>
+                  <option *ngFor="let st of students" [value]="st.id">{{st.email}}</option>
+              </select>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-6" *ngFor="let q of quizs">
+          <h4>{{q.Text}}</h4>
+          <div *ngFor="let a of q.Answers">
+              <input (change)="choose(q.Id, a.Id)" [id]="a.Id" type="radio" [value]="a.Id" [name]="q.Id">
+              <label [for]="a.Id">{{a.Text}}</label>
+          </div>
+      </div>
+      <div class="d-flex mt-3 justify-content-center">
+          <button (click)="submit()" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</div>

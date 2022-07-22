@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="col-8 offset-6">
+    <h3 class="text-center">Thêm câu hỏi</h3>
+    <form [formGroup]="addQuestionForm" (ngSubmit)="addQuestion()">
+      <div class="form-group">
+        <label for="">Câu hỏi</label>
+        <input type="text" formControlName="Text" class="form-control">
+        <div *ngIf="addQuestionForm.controls['Text'].errors
+                && (addQuestionForm.controls['Text'].touched
+                || addQuestionForm.controls['Text'].dirty)">
+          <span class="text-danger" *ngIf="addQuestionForm.controls['Text'].hasError('required')">Không được để trống</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Tên Môn Học</label>
+        <input type="number" formControlName="Marks" class="form-control">
+        <div *ngIf="addQuestionForm.controls['Marks'].errors
+                && (addQuestionForm.controls['Marks'].touched
+                || addQuestionForm.controls['Marks'].dirty)">
+          <span class="text-danger" *ngIf="addQuestionForm.controls['Marks'].hasError('required')">Không được để trống</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <button [disabled]="addQuestionForm.invalid" class="btn btn-primary">Lưu</button>
+      </div>
+    </form>
+  </div>
+</div>
